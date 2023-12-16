@@ -12,10 +12,11 @@ const boxes = document.querySelector("#boxes");
 
 
 
-create.addEventListener("click", createCube);
-destroy.addEventListener("click", destroyCube);
+create.addEventListener("click", createBoxes);
+destroy.addEventListener("click", destroyBoxes);
 
-function createCube () {
+
+function createBoxes () {
   const elem = parseInt(input.value);
   
   if (!elem || elem < 1 || elem > 100) {
@@ -25,30 +26,23 @@ function createCube () {
   boxes.innerHTML = "";
 
   let size = 30;
+  let boxString = ''
 
   for(let i=0; i < elem; i += 1) {
-    const cube = document.createElement("div");
-    cube.style.height = `${size}px`;
-    cube.style.width = `${size}px`;
-    cube.style.backgroundColor = getRandomHexColor();
-    boxes.append(cube); 
+    const color = getRandomHexColor();
+    boxString += `<div style="height:${size}px; width:${size}px; background-color:${color}"> </div>`;
     size += 10;
   }
 
-
-
+  boxes.innerHTML = boxString;
 
 
   input.value = '';
 }
 
 
-function destroyCube () {
+function destroyBoxes () {
   boxes.innerHTML = "";
 }
-
-
-
-
 
 
